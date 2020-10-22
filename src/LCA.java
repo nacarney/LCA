@@ -8,6 +8,9 @@ class Node
 	Node(int data) {
 		this.data = data;
 	}
+	Node(){
+		this.data = -1;
+	}
 }
 
 class Main
