@@ -4,18 +4,27 @@
 class Node 
 { 
 	int data; 
-	Node left, right; 
+	Node left, right;
 
 	Node(int item) 
 	{ 
+		if(item>=0)
+		{
 		data = item; 
 		left = right = null; 
+		}
 	} 
+	
+	Node()
+	{
+		data = -1;
+	}
 } 
 
 class BinaryTree 
 { 
 	Node root; 
+	static String treeString;
 	
 	/* Function to find LCA of n1 and n2. The function assumes that both 
 	n1 and n2 are present in BST */
@@ -34,6 +43,36 @@ class BinaryTree
 
 		return node; 
 	} 
+	
+	// Function to construct string from binary tree  
+	public static void treeToString(Node root)  
+	{  
+	    // bases case  
+	    if (root == null)  
+	        return;  
+	  
+	    // push the root data as character  
+	    treeString += (Character.valueOf((char)  
+	           (root.data + '0')));  
+	  
+	    // if leaf node, then return  
+	    if (root.left == null && root.right == null)  
+	        return;  
+	  
+	    // for left subtree  
+	    treeString += ('(');  
+	    treeToString(root.left);  
+	    treeString += (')');  
+	  
+	    // only if right child is present to  
+	    // avoid extra parenthesis  
+	    if (root.right != null)  
+	    {  
+	        treeString += ('(');  
+	        treeToString(root.right);  
+	        treeString += (')');  
+	    }  
+	}  
 
 	/* Driver program to test lca() */
 	public static void main(String args[]) 
