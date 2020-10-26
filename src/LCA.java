@@ -1,3 +1,4 @@
+
 // Recursive Java program to print lca of two nodes 
 
 // A binary tree node 
@@ -24,7 +25,6 @@ class Node
 class BinaryTree 
 { 
 	Node root; 
-	static String treeString;
 	
 	/* Function to find LCA of n1 and n2. The function assumes that both 
 	n1 and n2 are present in BST */
@@ -44,17 +44,34 @@ class BinaryTree
 		return node; 
 	} 
 	
-	public String toString() {
-		return toString(root);
-	    }
-
-	    public String toString(Node node) {
-		if (node == null) {
-		    return "";
-		}
-		return node.toString() + "(" + toString(node.left) + ", " +
-		    toString(node.right) + ")";
-	    }
+	
+	    public static String printNodesInOrder(Node node) {
+    	
+    	if(node != null) {
+    	return printNode(node);
+    	}
+    	else{
+    		return "";
+    	}
+    }
+    
+     public static String printNode(Node node)
+     {
+    	if(node == null)
+    	{
+    		return "()";
+    	}
+    	else if(node.left == null && node.right == null)
+    	{
+    		return "(()"+ Integer.toString(node.data) + "())";
+    	}
+    	else
+    	{
+    		return "(" + printNode(node.left) + Integer.toString(node.data) +
+    				printNode(node.right) + ")";
+    	}
+    }
+	    
 
 	/* Driver program to test lca() */
 	public static void main(String args[]) 
@@ -69,7 +86,7 @@ class BinaryTree
 		tree.root.left.right.left = new Node(10); 
 		tree.root.left.right.right = new Node(14); 
 		
-		System.out.println("" + treeString);
+		System.out.println(""+ printNodesInOrder(tree.root));
 		
 		int n1 = 10, n2 = 14; 
 		Node t = tree.lca(tree.root, n1, n2); 
