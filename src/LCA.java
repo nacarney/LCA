@@ -1,129 +1,68 @@
+// Recursive Java program to print lca of two nodes 
 
-// Data structure to store a Binary Search Tree node
-class Node
-{
-	int data;
-	Node left = null, right = null;
+// A binary tree node 
+class Node 
+{ 
+	int data; 
+	Node left, right; 
 
-	Node(int data) {
-		this.data = data;
-	}
-	Node(){
-		this.data = -1;
-	}
-}
+	Node(int item) 
+	{ 
+		data = item; 
+		left = right = null; 
+	} 
+} 
 
-class Main
-{
-	// Recursive function to insert a key into BST
-	public static Node insert(Node root, int key)
-	{
-		// if the root is null, create a new node and return it
-		if (root == null) {
-			return new Node(key);
-		}
+class BinaryTree 
+{ 
+	Node root; 
+	
+	/* Function to find LCA of n1 and n2. The function assumes that both 
+	n1 and n2 are present in BST */
+	Node lca(Node node, int n1, int n2) 
+	{ 
+		if (node == null) 
+			return null; 
 
-		// if given key is less than the root node, recur for left subtree
-		if (key < root.data) {
-			root.left = insert(root.left, key);
-		}
+		// If both n1 and n2 are smaller than root, then LCA lies in left 
+		if (node.data > n1 && node.data > n2) 
+			return lca(node.left, n1, n2); 
 
-		// if given key is more than the root node, recur for right subtree
-		else {
-			root.right = insert(root.right, key);
-		}
+		// If both n1 and n2 are greater than root, then LCA lies in right 
+		if (node.data < n1 && node.data < n2) 
+			return lca(node.right, n1, n2); 
 
-		return root;
-	}
+		return node; 
+	} 
 
-	// Iterative function to search a given key in root
-	public static boolean search(Node root, int key)
-	{
-		// traverse the tree and search for the key
-		while (root != null)
-		{
-			// if given key is less than the current node, go to left
-			// subtree else go to right subtree
+	/* Driver program to test lca() */
+	public static void main(String args[]) 
+	{ 
+		// Let us construct the BST shown in the above figure 
+		BinaryTree tree = new BinaryTree(); 
+		tree.root = new Node(20); 
+		tree.root.left = new Node(8); 
+		tree.root.right = new Node(22); 
+		tree.root.left.left = new Node(4); 
+		tree.root.left.right = new Node(12); 
+		tree.root.left.right.left = new Node(10); 
+		tree.root.left.right.right = new Node(14); 
 
-			if (key < root.data) {
-				root = root.left;
-			}
-			else if (key > root.data) {
-				root = root.right;
-			}
-			// if key is found return true
-			else {
-				return true;
-			}
-		}
+		int n1 = 10, n2 = 14; 
+		Node t = tree.lca(tree.root, n1, n2); 
+		System.out.println("LCA of " + n1 + " and " + n2 + " is " + t.data); 
 
-		// we reach here if the key is not present in the BST
-		return false;
-	}
+		n1 = 14; 
+		n2 = 8; 
+		t = tree.lca(tree.root, n1, n2); 
+		System.out.println("LCA of " + n1 + " and " + n2 + " is " + t.data); 
 
-	// Recursive function to find Lowest Common Ancestor of given nodes
-	// x and y where both x and y are present in the Binary Search Tree
-	public static Node LCARecursive(Node root, int x, int y)
-	{
-		// base case: empty tree
-		if (root == null) {
-			return null;
-		}
+		n1 = 10; 
+		n2 = 22; 
+		t = tree.lca(tree.root, n1, n2); 
+		System.out.println("LCA of " + n1 + " and " + n2 + " is " + t.data); 
 
-		// if both x and y is smaller than root, LCA exists in left subtree
-		if (root.data > Integer.max(x, y)) {
-			return LCARecursive(root.left, x, y);
-		}
+	} 
+} 
 
-		// if both x and y is greater than root, LCA exists in right subtree
-		else  if (root.data < Integer.min(x, y)) {
-			return LCARecursive(root.right, x, y);
-		}
-
-		// if one key is greater (or equal) than root and one key is smaller
-		// (or equal) than root, then the current node is LCA
-		return root;
-	}
-
-	// Print Lowest Common Ancestor of two nodes in a BST
-	public static void LCA(Node root, int x, int y)
-	{
-		// return if tree is empty or either x or y is not present
-		// in the tree
-		if (root == null || !search(root, x) || !search(root, y)) {
-			return;
-		}
-
-		// lca stores lowest common ancestor of x and y
-		Node lca = LCARecursive(root, x, y);
-
-		// if lowest common ancestor exists, print it
-		if (lca != null) {
-			System.out.println("LCA is " + lca.data);
-		}
-		else {
-			System.out.println("LCA do not exist");
-		}
-	}
-
-	public static void main(String[] args)
-	{
-		Node root = null;
-		/* Construct below tree
-			 15
-			/  \
-		   /	\
-		  10	 20
-		 / \	 / \
-		/   \   /   \
-		8   12 16   25
-		*/
-		int[] keys = { 15, 10, 20, 8, 12, 16, 25 };
-
-		for (int key : keys) {
-			root = insert(root, key);
-		}
-
-		LCA(root, 8, 12);
-	}
-}
+// This code has been contributed by Mayank Jaiswal 
