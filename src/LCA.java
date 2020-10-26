@@ -44,35 +44,17 @@ class BinaryTree
 		return node; 
 	} 
 	
-	// Function to construct string from binary tree  
-	public static void treeToString(Node root)  
-	{  
-	    // bases case  
-	    if (root == null)  
-	        return;  
-	  
-	    // push the root data as character  
-	    treeString += (Character.valueOf((char)  
-	           (root.data + '0')));  
-	  
-	    // if leaf node, then return  
-	    if (root.left == null && root.right == null)  
-	        return;  
-	  
-	    // for left subtree  
-	    treeString += ('(');  
-	    treeToString(root.left);  
-	    treeString += (')');  
-	  
-	    // only if right child is present to  
-	    // avoid extra parenthesis  
-	    if (root.right != null)  
-	    {  
-	        treeString += ('(');  
-	        treeToString(root.right);  
-	        treeString += (')');  
-	    }  
-	}  
+	public String toString() {
+		return toString(root);
+	    }
+
+	    public String toString(Node node) {
+		if (node == null) {
+		    return "";
+		}
+		return node.toString() + "(" + toString(node.left) + ", " +
+		    toString(node.right) + ")";
+	    }
 
 	/* Driver program to test lca() */
 	public static void main(String args[]) 
@@ -86,7 +68,9 @@ class BinaryTree
 		tree.root.left.right = new Node(12); 
 		tree.root.left.right.left = new Node(10); 
 		tree.root.left.right.right = new Node(14); 
-
+		
+		System.out.println("" + treeString);
+		
 		int n1 = 10, n2 = 14; 
 		Node t = tree.lca(tree.root, n1, n2); 
 		System.out.println("LCA of " + n1 + " and " + n2 + " is " + t.data); 
@@ -100,6 +84,7 @@ class BinaryTree
 		n2 = 22; 
 		t = tree.lca(tree.root, n1, n2); 
 		System.out.println("LCA of " + n1 + " and " + n2 + " is " + t.data); 
+		
 
 	} 
 } 
