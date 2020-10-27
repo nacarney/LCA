@@ -125,6 +125,10 @@ public class LCATest {
 	
 	@Test
 	public void testTreeOutOfOrder() {
+		
+	// If the tree is out of order, the LCA function will provide the same answer as it would if the tree 
+	// was in order
+		
 	BinaryTree tree = new BinaryTree();
 	tree.root = new Node(50);
 	tree.root.left = new Node(30);
