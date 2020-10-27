@@ -98,8 +98,8 @@ public class LCATest {
 	public void testSingleNode() {
 
 		// function assumes that n1 and n2 are present in the tree. If there is only a root in
-		// the tree and the passed n1 or n2 is equal to this root, then no matter the value of the corresponding
-		// n1/n2, the function will return 1
+		// the tree and the passed n1 or n2 is equal to this root, then no matter the value of the 
+		//corresponding n1/n2, the function will return the root value
 		
 		
 		BinaryTree testTree = new BinaryTree();
@@ -109,6 +109,20 @@ public class LCATest {
 		assertEquals(1,testTree.lca(testNode, n1, n2).data);
 	}
 	
+	@Test 
+	public void testArgumentsNotInTree() {
+		
+		BinaryTree testTree = new BinaryTree();
+		
+		testTree.root = new Node(15); 
+		testTree.root.left = new Node(12);
+		testTree.root.right = new Node(18); 
+
+		int n1 = 1;
+		int n2 = 2;
+
+		assertEquals(null, testTree.lca(testTree.root, n1, n2));
+	}
 	
 
 
