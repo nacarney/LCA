@@ -133,10 +133,10 @@ public class LCATest {
 	tree.root.left.right = new Node(70);
 	tree.root.right.left = new Node(20);
 	tree.root.right.right = new Node(60);
-	assertEquals("LCA of tree is out of order", 50, tree.lca(tree.root,60, 40));
-	assertEquals("LCA of tree is out of order", 30, tree.lca(tree.root, 30, 40));
-	assertEquals("LCA of tree is out of order", 10, tree.lca(tree.root, 60, 20));
-	assertEquals("LCA of tree is out of order", 50, tree.lca(tree.root, 70, 20));
+	assertEquals("LCA of tree is out of order", 50, tree.lca(tree.root,60, 40).data);
+	assertEquals("LCA of tree is out of order", 30, tree.lca(tree.root, 30, 40).data);
+	assertEquals("LCA of tree is out of order", 50, tree.lca(tree.root, 60, 20).data);
+	assertEquals("LCA of tree is out of order", 50, tree.lca(tree.root, 70, 20).data);
 	}
 	
 
