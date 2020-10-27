@@ -123,6 +123,22 @@ public class LCATest {
 		assertEquals(null, testTree.lca(testTree.root, n1, n2));
 	}
 	
+	@Test
+	public void testTreeOutOfOrder() {
+	BinaryTree tree = new BinaryTree();
+	tree.root = new Node(50);
+	tree.root.left = new Node(30);
+	tree.root.right = new Node(10);
+	tree.root.left.left = new Node(40);
+	tree.root.left.right = new Node(70);
+	tree.root.right.left = new Node(20);
+	tree.root.right.right = new Node(60);
+	assertEquals("LCA of tree is out of order", 50, tree.lca(tree.root,60, 40));
+	assertEquals("LCA of tree is out of order", 30, tree.lca(tree.root, 30, 40));
+	assertEquals("LCA of tree is out of order", 10, tree.lca(tree.root, 60, 20));
+	assertEquals("LCA of tree is out of order", 50, tree.lca(tree.root, 70, 20));
+	}
+	
 
 
 	
