@@ -57,12 +57,11 @@ public class LCATest {
         //  /    \	  /
         // 11     13 17
       
-		int n1 = 11, n2 = 13; 
-		Node t = testTree.lca(testTree.root, n1, n2); 
 		
-		n1 = 17; 
-		n2 = 13; 
-		t = testTree.lca(testTree.root, n1, n2); 
+		
+		int n1 = 17; 
+		int n2 = 13; 
+		Node t = testTree.lca(testTree.root, n1, n2); 
 		
 		assertEquals(15, t.data);
 		
