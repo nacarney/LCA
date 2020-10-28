@@ -1,7 +1,7 @@
 # LCA
 Assignment 1 - Software Engineering Java/Python
 
-LCA PYTHON IMPLEMENTATION LINK -> https://github.com/nacarney/LCA-Python-
+LCA PYTHON REPOSITORY LINK -> https://github.com/nacarney/LCA-Python-
 
 1. I got my Java and Python Implementation of LCA from this site:
 
