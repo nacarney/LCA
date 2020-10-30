@@ -143,6 +143,17 @@ public class LCATest {
 	assertEquals("LCA of tree is out of order", 50, tree.lca(tree.root, 70, 20).data);
 	}
 	
+	@Test
+	public void testSingleNodeGraph() {
+		
+		directedAcyclicGraph testGraph = new directedAcyclicGraph;
+		
+		graph.root = new Node(10);
+		int n1 = 1;
+		int n2 = 10;
+		assertEquals("LCA Graph has Single Node", 10, testGraph.lca(graph.root, n1, n2).data);
+	}
+	
 
 
 	
