@@ -146,7 +146,7 @@ public class LCATest {
 	@Test
 	public void testSingleNodeGraph() {
 		
-		directedAcyclicGraph testGraph = new directedAcyclicGraph;
+		directedAcyclicGraph testGraph = new directedAcyclicGraph();
 		
 		graph.root = new Node(10);
 		int n1 = 1;
