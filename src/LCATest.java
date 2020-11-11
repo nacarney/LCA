@@ -166,7 +166,11 @@ public class LCATest {
 	@Test
 	public void testAddEdge()
 	{
+		dag dag = new dag(3);
 		
+		dag.addEdge(1,2);
+		
+		assertEquals(1, dag.Edges());
 	}
 	
 	@Test
@@ -176,7 +180,7 @@ public class LCATest {
 	}
 
 	@Test
-	public void testOutDegree
+	public void testOutDegree()
 	{
 		
 	}
