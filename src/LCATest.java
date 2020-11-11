@@ -144,15 +144,32 @@ public class LCATest {
 	}
 	
 	@Test
-	public void testSingleNodeGraph() {
+	public void testPopulatedDAG()
+	{
+		dag dag = new dag(12);
 		
-		directedAcyclicGraph testGraph = new directedAcyclicGraph();
+		dag.addEdge(1,2);
+		dag.addEdge(2,3);
+		dag.addEdge(2,4);
+		dag.addEdge(4,7);
+		dag.addEdge(3,5);
+		dag.addEdge(3,6);
 		
-		graph.root = new Node(10);
-		int n1 = 1;
-		int n2 = 10;
-		assertEquals("LCA Graph has Single Node", 10, testGraph.lca(graph.root, n1, n2).data);
+		assertEquals(1, dag.inDegree(2));
+		assertEquals(2, dag.outDegree(3));
+		assertEquals("Number of Edges in Graph", 6, dag.Edges());
+		assertEquals("Number of Vertices in Graph", 12, dag.Vertices());
+		String adjacentNodes = "[5, 6]";
+		assertEquals(adjacentNodes, dag.adjacentNodes(3).toString());
 	}
+	
+	@Test
+	public void testAddEdge()
+	{
+		
+	}
+	
+
 	
 
 
