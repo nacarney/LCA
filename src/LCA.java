@@ -150,8 +150,36 @@ class Dag
 	
 	public int inDegree(int v)
 	{
-		
+		if(validateVertex(v) >0)
+		{
+			return inDegree[v];
+		}
+		else
+		{
+			return -1;
+		}
 	}
+	
+	public int outDegree(int v)
+	{
+		if(validateVertex(v) > 0)
+		{
+			return adjacencyList[v].size();
+			
+		}
+		else
+		{
+			return -1;
+			
+		}
+	}
+	
+	public Iterable<Integer> adjacencyList(int v)
+	{
+		return adjacencyList[v];
+	}
+	
+	
 }
 
 
