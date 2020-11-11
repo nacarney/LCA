@@ -143,6 +143,163 @@ public class LCATest {
 	assertEquals("LCA of tree is out of order", 50, tree.lca(tree.root, 70, 20).data);
 	}
 	
+	@Test
+	public void testPopulatedDAG()
+	{
+		Dag dag = new Dag(12);
+		
+		dag.addEdge(1,2);
+		dag.addEdge(2,3);
+		dag.addEdge(2,4);
+		dag.addEdge(4,7);
+		dag.addEdge(3,5);
+		dag.addEdge(3,6);
+		
+		assertEquals(1, dag.inDegree(2));
+		assertEquals(2, dag.outDegree(3));
+		assertEquals("Number of Edges in Graph", 6, dag.Edges());
+		assertEquals("Number of Vertices in Graph", 12, dag.Vertices());
+		String adjacent = "[5, 6]";
+		assertEquals(adjacent, dag.adjacencyList(3).toString());
+	}
+	
+	@Test
+	public void testAddEdge()
+	{
+		Dag dag = new Dag(3);
+		
+		dag.addEdge(1,2);
+		
+		// this edge will not be added because 4 is greater than the 
+		//amount of vertices in the DAG
+		dag.addEdge(3,4);
+		
+		assertEquals(1, dag.Edges());
+	}
+	
+	@Test
+	public void testInDegree()
+	{
+		Dag dag = new Dag(6);
+		
+		dag.addEdge(1,2);
+		dag.addEdge(2,3);
+		dag.addEdge(3,4);
+		
+		assertEquals(1, dag.inDegree(3));
+		
+		assertEquals(-1, dag.inDegree(-46));
+		
+	}
+
+	@Test
+	public void testOutDegree()
+	{
+		Dag dag = new Dag(4);
+		
+		dag.addEdge(1,2);
+		dag.addEdge(2,4);
+		dag.addEdge(3, 3);
+		
+		assertEquals(1, dag.outDegree(3));
+		assertEquals(-1, dag.outDegree(-46));
+		
+	}
+	
+	@Test
+	public void testVertices()
+	{
+		Dag dag = new Dag(8);
+		assertEquals(8, dag.Vertices());
+		
+	}
+	
+	@Test
+	public void testEdges()
+	{
+		Dag dag = new Dag(5);
+		
+		dag.addEdge(1, 2);
+		dag.addEdge(2, 3);
+		dag.addEdge(3, 4);
+		
+		assertEquals(3, dag.Edges());
+	}
+
+	@Test
+	public void testAdjacent()
+	{
+		Dag dag = new Dag(4);
+		
+		dag.addEdge(1,2);
+		dag.addEdge(2,3);
+		dag.addEdge(3,4);
+		
+		String adjacent = "[2]";
+		assertEquals(adjacent, dag.adjacencyList(1).toString());
+		
+	}
+	
+	@Test 
+	public void testLCA()
+	{
+
+		Dag dag = new Dag(10);
+
+		dag.addEdge(0, 1);
+		dag.addEdge(1, 3);
+		dag.addEdge(1, 2);
+		dag.addEdge(3, 4);
+		dag.addEdge(2, 5);
+		dag.addEdge(5, 6);
+		dag.addEdge(4, 6);
+		dag.addEdge(6, 7);
+		dag.addEdge(4, 8);
+		dag.addEdge(8, 7);
+
+		assertEquals(1, dag.findLCA(4, 5));
+		assertEquals(8, dag.findLCA(7, 8));
+		assertEquals(6, dag.findLCA(6, 7));
+		
+		//Vertex not in DAG
+		assertEquals(-1, dag.findLCA(9, 3));
+		
+		//Negative Vertex
+		assertEquals(-1, dag.findLCA(-1, -4));
+	}
+	
+	@Test
+	public void testCyclicDag()
+	{
+		Dag dag = new Dag(8);
+		
+		dag.addEdge(0, 1);
+		dag.addEdge(1, 2);
+		dag.addEdge(2, 3);
+		dag.addEdge(3, 0);
+		dag.addEdge(3, 4);
+		
+		dag.findCycle(0);
+		
+		assertTrue(dag.hasCycle());
+	}
+	
+	@Test 
+	public void testAcyclicDag()
+	{
+		Dag dag =  new Dag(5);
+		
+		dag.addEdge(0, 1);
+		dag.addEdge(1, 2);
+		dag.addEdge(3, 3);
+		
+		dag.findCycle(0);
+		assertFalse(dag.hasCycle());
+		
+	}
+	
+	
+	
 
 
 	
