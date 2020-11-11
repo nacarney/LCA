@@ -201,7 +201,7 @@ public class LCATest {
 		dag.addEdge(2,4);
 		dag.addEdge(3, 3);
 		
-		assertEquals(1, dag.outDegree(2));
+		assertEquals(1, dag.outDegree(3));
 		assertEquals(-1, dag.outDegree(-46));
 		
 	}
