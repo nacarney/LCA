@@ -1,11 +1,12 @@
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
 
 
 // Recursive Java program to print lca of two nodes 
 
 class Node 
 { 
-	ArrayList<Integer> parents;
 	int data; 
 	Node left, right;
 
@@ -78,6 +79,35 @@ class BinaryTree
 
 class Dag
 {
+	private int Vertices; 
+	private int Edges;
+	private ArrayList<Integer>[] adjacencyList;
+	private int [] inDegree;
+	private int outDegree;
+	private boolean marked [];
+	private boolean hasCycle;
+	private boolean stack [];
+	
+	public Dag(int vertices)
+	{
+		if(vertices<0)
+		{
+			throw new IllegalArgumentException("Number of vertices in graph must not be less than 0");
+			
+		}
+		
+		this.Vertices = vertices;
+		this.Edges = 0;
+		inDegree = new int[Vertices];
+		marked = new boolean[Vertices];
+		stack = new boolean[Vertices];
+		adjacencyList = (ArrayList<Integer>[]) new ArrayList[Vertices];
+		
+		for(int v = 0; v<Vertices; v++)
+		{
+			adjacencyList[v] = new ArrayList<Integer>();
+		}
+	}
 	
 	
 }
