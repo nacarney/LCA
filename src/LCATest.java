@@ -272,8 +272,29 @@ public class LCATest {
 	{
 		Dag dag = new Dag(8);
 		
-		dag.addEdge(0,1);
-		dag.addEdge
+		dag.addEdge(0, 1);
+		dag.addEdge(1, 2);
+		dag.addEdge(2, 3);
+		dag.addEdge(3, 0);
+		dag.addEdge(3, 4);
+		
+		dag.findCycle(0);
+		
+		assertTrue(dag.hasCycle());
+	}
+	
+	@Test 
+	public void testAcyclicDag()
+	{
+		Dag dag =  new Dag(5);
+		
+		dag.addEdge(0, 1);
+		dag.addEdge(1, 2);
+		dag.addEdge(3, 3);
+		
+		dag.findCycle(0);
+		assertFalse(dag.hasCycle());
+		
 	}
 	
 	
