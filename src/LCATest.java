@@ -146,7 +146,7 @@ public class LCATest {
 	@Test
 	public void testPopulatedDAG()
 	{
-		dag dag = new dag(12);
+		Dag dag = new dag(12);
 		
 		dag.addEdge(1,2);
 		dag.addEdge(2,3);
@@ -166,7 +166,7 @@ public class LCATest {
 	@Test
 	public void testAddEdge()
 	{
-		dag dag = new dag(3);
+		Dag dag = new dag(3);
 		
 		dag.addEdge(1,2);
 		
