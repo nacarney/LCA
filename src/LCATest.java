@@ -169,6 +169,29 @@ public class LCATest {
 		
 	}
 	
+	@Test
+	public void testInDegree()
+	{
+		
+	}
+
+	@Test
+	public void testOutDegree
+	{
+		
+	}
+	
+	@Test
+	public void testVertices()
+	{
+		
+	}
+	
+	@Test
+	public void testEdges()
+	{
+		
+	}
 
 	
 
