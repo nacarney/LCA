@@ -118,6 +118,33 @@ class Dag
 	{
 		return Edges;
 	}
+	
+	private int validateVertex(int v)
+	{
+		if(v < 0 || v >= Vertices)
+		{
+			return -1;
+		}
+		else
+		{
+			return 1;
+		}
+	}
+	
+	public void addEdge(int v, int w)
+	{
+		if((validateVertex(v) > 0) && (validateVertex(w) >0))
+		{
+			adjacencyList[v].add(w);
+			inDegree[w]++;
+			Edges++;
+		}
+		else
+		{
+			System.out.println("Please only enter numbers greater than 0 and less than "
+					+ (Vertices - 1));
+		}
+	}
 }
 
 
