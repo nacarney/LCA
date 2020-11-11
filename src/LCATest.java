@@ -146,7 +146,7 @@ public class LCATest {
 	@Test
 	public void testPopulatedDAG()
 	{
-		Dag dag = new dag(12);
+		Dag dag = new Dag(12);
 		
 		dag.addEdge(1,2);
 		dag.addEdge(2,3);
@@ -166,9 +166,13 @@ public class LCATest {
 	@Test
 	public void testAddEdge()
 	{
-		Dag dag = new dag(3);
+		Dag dag = new Dag(3);
 		
 		dag.addEdge(1,2);
+		
+		// this edge will not be added because 4 is greater than the 
+		//amount of vertices in the DAG
+		dag.addEdge(3,4);
 		
 		assertEquals(1, dag.Edges());
 	}
@@ -176,12 +180,28 @@ public class LCATest {
 	@Test
 	public void testInDegree()
 	{
+		Dag dag = new Dag(6);
+		
+		dag.addEdge(1,2);
+		dag.addEdge(2,3);
+		dag.addEdge(3,4);
+		
+		assertEquals(1, dag.inDegree(3));
+		
+		assertEquals(-1, dag.inDegree(-46));
 		
 	}
 
 	@Test
 	public void testOutDegree()
 	{
+		Dag dag = new Dag(3);
+		
+		dag.addEdge(1,2);
+		dag.addEdge(2,3);
+		
+		assertEquals(1, dag.outDegree(2));
+		assertEquals(-1, dag.outDegree(-46));
 		
 	}
 	
