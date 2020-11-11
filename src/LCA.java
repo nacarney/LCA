@@ -1,9 +1,11 @@
+import java.util.ArrayList;
+
 
 // Recursive Java program to print lca of two nodes 
 
-// A binary tree node 
 class Node 
 { 
+	ArrayList<Integer> parents;
 	int data; 
 	Node left, right;
 
@@ -72,6 +74,14 @@ class BinaryTree
     				printNode(node.right) + "";
     	}
     }
-} 
+}
+
+class Dag
+{
+	
+	
+}
+
+
 
 // This code has been contributed by Mayank Jaiswal 
