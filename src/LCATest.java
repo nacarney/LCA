@@ -220,11 +220,26 @@ public class LCATest {
 		
 		dag.addEdge(1, 2);
 		dag.addEdge(2, 3);
-		dag.addEdge(3,4);
+		dag.addEdge(3, 4);
 		
 		assertEquals(3, dag.Edges());
 	}
 
+	@Test
+	public void testAdjacent()
+	{
+		Dag dag = new Dag(4);
+		
+		dag.addEdge(1,2);
+		dag.addEdge(2,3);
+		dag.addEdge(3,4);
+		
+		String adjacent = "[2]";
+		assertEquals(adjacent, dag.adjacent(1).toString());
+		
+	}
+	
+	
 	
 
 
