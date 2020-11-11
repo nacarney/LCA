@@ -208,13 +208,21 @@ public class LCATest {
 	@Test
 	public void testVertices()
 	{
+		Dag dag = new Dag(8);
+		assertEquals(8, dag.Vertices());
 		
 	}
 	
 	@Test
 	public void testEdges()
 	{
+		Dag dag = new Dag(5);
 		
+		dag.addEdge(1, 2);
+		dag.addEdge(2, 3);
+		dag.addEdge(3,4);
+		
+		assertEquals(3, dag.Edges());
 	}
 
 	
