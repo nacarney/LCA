@@ -159,8 +159,8 @@ public class LCATest {
 		assertEquals(2, dag.outDegree(3));
 		assertEquals("Number of Edges in Graph", 6, dag.Edges());
 		assertEquals("Number of Vertices in Graph", 12, dag.Vertices());
-		String adjacentNodes = "[5, 6]";
-		assertEquals(adjacentNodes, dag.adjacentNodes(3).toString());
+		String adjacent = "[5, 6]";
+		assertEquals(adjacent, dag.adjacencyList(3).toString());
 	}
 	
 	@Test
@@ -235,7 +235,7 @@ public class LCATest {
 		dag.addEdge(3,4);
 		
 		String adjacent = "[2]";
-		assertEquals(adjacent, dag.adjacent(1).toString());
+		assertEquals(adjacent, dag.adjacencyList(1).toString());
 		
 	}
 	
