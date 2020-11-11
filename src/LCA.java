@@ -109,7 +109,15 @@ class Dag
 		}
 	}
 	
+	public int Vertices()
+	{
+		return Vertices;
+	}
 	
+	public int Edges()
+	{
+		return Edges;
+	}
 }
 
 
