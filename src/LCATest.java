@@ -195,10 +195,11 @@ public class LCATest {
 	@Test
 	public void testOutDegree()
 	{
-		Dag dag = new Dag(3);
+		Dag dag = new Dag(4);
 		
 		dag.addEdge(1,2);
-		dag.addEdge(2,3);
+		dag.addEdge(2,4);
+		dag.addEdge(3, 3);
 		
 		assertEquals(1, dag.outDegree(2));
 		assertEquals(-1, dag.outDegree(-46));
