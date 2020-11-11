@@ -75,6 +75,8 @@ class BinaryTree
     				printNode(node.right) + "";
     	}
     }
+     
+  // This code has been contributed by Mayank Jaiswal 
 }
 
 class Dag
@@ -145,8 +147,13 @@ class Dag
 					+ (Vertices - 1));
 		}
 	}
+	
+	public int inDegree(int v)
+	{
+		
+	}
 }
 
 
 
-// This code has been contributed by Mayank Jaiswal 
+
